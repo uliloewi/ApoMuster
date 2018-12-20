@@ -1,0 +1,27 @@
+<h2>Information der Bestellung {{order.OrderID}}</h2>
+<h3>{{errorMsg}}</h3>
+<tr>
+  <td>Status:</td>
+  <td >{{order.StateName}}</td>  
+</tr>
+<tr >
+    <td>Bestellt am:</td>
+    <td >{{order.OrderDate}}</td>
+</tr>
+<tr >
+    <td>Bestellt von:</td>
+    <td >{{order.Aponame}}</td>
+</tr>
+<h2>Artikel</h2>
+<tr>
+    <td>Artikelnume</td>
+    <td>Menge</td>
+  </tr>
+<tr *ngFor="let item of orderitems">
+    <td >
+        {{item.ProductName}}
+    </td>
+    <td >
+        {{item.Quantity}}
+    </td>       
+  </tr>

@@ -14,6 +14,9 @@ import { AuthService } from './auth.service';
 import { EventService } from './event.service';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { ChangeCustomerNumberComponent } from './change-customer-number/change-customer-number.component';
+import { SearchpharmacyComponent } from './searchpharmacy/searchpharmacy.component';
+import { PharmacyinfoComponent } from './pharmacyinfo/pharmacyinfo.component';
+import { OrderinfoComponent } from './orderinfo/orderinfo.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { ChangeCustomerNumberComponent } from './change-customer-number/change-c
     RegisterComponent,
     EventsComponent,
     SpecialEventsComponent,
-    ChangeCustomerNumberComponent
+    ChangeCustomerNumberComponent,
+    SearchpharmacyComponent,
+    PharmacyinfoComponent,
+    OrderinfoComponent
   ],
   imports: [
     BrowserModule,

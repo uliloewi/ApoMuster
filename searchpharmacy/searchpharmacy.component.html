@@ -1,0 +1,51 @@
+<div class="py-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <span class="anchor"></span>
+
+      <!-- form card login -->
+      <div class="card rounded-0">
+        <div class="card-header">
+          <h3 class="mb-0">Bestellungen vom Kunde</h3>
+        </div>
+        <div class="card-body">
+          <form class="form">
+            <div class="form-group">
+              <label for="uname1">Kundennummer</label>
+              <input type="text" class="form-control rounded-0" [(ngModel)]="CustomerNumber" name="customernumber" required>
+              <button type="button" (click)="searchPharmacyByCustomerNumber()" class="btn btn-success float-right">Suche</button>
+            </div>
+            <div class="form-group">
+              <label>Apothekename</label>
+              <input type="text" class="form-control rounded-0" [(ngModel)]="PharmacyName" name="pharmacyname" required>
+              <button type="button" (click)="searchPharmacyByPharmacyName()" class="btn btn-success float-right">Suche</button>
+            </div>
+            <div>
+              <h2>Gefundene Apotheken</h2>
+                  <h3>{{errorMsg}}</h3>
+                  <tr>
+                    <td>Name</td>
+                    <td>Kundennummer</td>
+                    <td>Ort</td>
+                  </tr>
+                  <tr *ngFor="let pharmacy of pharmacies">
+                      <td >
+                          <a [routerLink]="['/pharmacyinfo', pharmacy.Kundennummer]">{{pharmacy.ApothekenName}}</a>
+                      </td>
+                      <td >
+                          {{pharmacy.Kundennummer}}
+                      </td>
+                      <td >
+                          {{pharmacy.Ort}}
+                      </td>
+                    </tr>
+            </div>
+           
+          </form>
+        </div>
+        <!--/card-block-->
+      </div>
+      <!-- /form card login -->
+    </div>
+  </div>
+</div>

@@ -1,6 +1,11 @@
 
+
 <h2>Information der Apotheke {{pharmacy.Kundennummer}}</h2>
 <h3>{{errorMsg}}</h3>
+<div  class="box">
+    <tr><a [routerLink]="['/changecustomernumber',pharmacy.Kundennummer]">Kundennummer  aktualisieren</a></tr>
+</div>
+<div class="box">
 <tr>
   <td>Name:</td>
   <td >{{pharmacy.ApothekenName}}</td>  
@@ -30,3 +35,4 @@
         {{order.OrderDate}}
     </td>    
   </tr>
+</div>

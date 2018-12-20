@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
-import { Router } from '@angular/router'
+import { ActivatedRoute,Router } from '@angular/router'
 
 @Component({
   selector: 'app-change-customer-number',
@@ -9,19 +9,22 @@ import { Router } from '@angular/router'
 })
 export class ChangeCustomerNumberComponent implements OnInit {
 
-  NumberPair = {}
+  //NumberPair = {}
+  public OldValue
+  public NewValue
 
-  constructor(private _event: EventService,
-    private _router: Router) { }
+  constructor(private _event: EventService, private route: ActivatedRoute, private router:Router) { }
 
   ngOnInit() {
+    this.OldValue = this.route.snapshot.params["oldnumber"];
   }
 
   saveToDatabase () {
-    this._event.SaveNewCustomerNumber(this.NumberPair)
+    var NumberPair={ "OldValue":this.OldValue, "NewValue":this.NewValue}
+    this._event.SaveNewCustomerNumber(NumberPair)
     .subscribe(
       res => {
-        this._router.navigate(['/events'])
+        this.router.navigate(['/events'])
       },
       err => console.log(err)
     ) 

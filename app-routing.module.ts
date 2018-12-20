@@ -21,7 +21,7 @@ const routes: Routes = [
     component: EventsComponent
   },
   {
-    path: 'changecustomernumber',
+    path: 'changecustomernumber/:oldnumber',
     component: ChangeCustomerNumberComponent
   },
   {

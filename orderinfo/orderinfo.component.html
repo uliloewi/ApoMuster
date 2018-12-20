@@ -1,3 +1,8 @@
+<div  class="box" id="leftmenu">
+    <tr><a [routerLink]="['/searchpharmacy']">Kunden suchen</a></tr>
+</div>
+<div  class="box" >
+
 <h2>Information der Bestellung {{order.OrderID}}</h2>
 <h3>{{errorMsg}}</h3>
 <tr>
@@ -14,7 +19,7 @@
 </tr>
 <h2>Artikel</h2>
 <tr>
-    <td>Artikelnume</td>
+    <td>Artikelname</td>
     <td>Menge</td>
   </tr>
 <tr *ngFor="let item of orderitems">
@@ -25,3 +30,4 @@
         {{item.Quantity}}
     </td>       
   </tr>
+</div>

@@ -24,7 +24,7 @@ export class ChangeCustomerNumberComponent implements OnInit {
     this._event.SaveNewCustomerNumber(NumberPair)
     .subscribe(
       res => {
-        this.router.navigate(['/events'])
+        this.router.navigate(['/pharmacyinfo', this.OldValue])
       },
       err => console.log(err)
     ) 

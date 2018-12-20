@@ -8,11 +8,9 @@ import { IPharmacy } from './Pharmacy';
 export class EventService {
   public pharm:IPharmacy;
   private _eventsUrl = "http://localhost:3000/api/events";
-  //private _saveNewValueUrl = "http://localhost:54703/api/v1/audittrails"; //Yu Li v1
-  private _saveNewValueUrl = "http://localhost:54703/api/v2/audittrails"; //Yu Li v2
-  private _searchPharmacyByNumberUrl="http://localhost:54703/api2/pharmacies/number=";
-  private _searchPharmacyByNameUrl="http://localhost:54703/api2/pharmacies/name=";
-  private _searchOrdersForPharmacyUrl="http://localhost:54703/api2/pharmacies/";
+  private _saveNewValueUrl = "http://localhost:54703/api/v1/audittrails"; //Yu Li v1
+  //private _saveNewValueUrl = "http://localhost:54703/api/v2/audittrails"; //Yu Li v2
+  private _pharmacyUrl="http://localhost:54703/api2/pharmacies/";
   private _orderUrl="http://localhost:54703/api2/orders/";
 
   constructor(private http: HttpClient) { }
@@ -32,18 +30,19 @@ export class EventService {
     return this.http.post<any>(this._saveNewValueUrl, valuepair, {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
-  searchPharmacyByPharmacyName(pharmacyname)
+  searchPharmacy(pharmacy)
   {
-    return this.http.get<IPharmacy[]>(this._searchPharmacyByNameUrl+pharmacyname,  {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.post<IPharmacy[]>(this._pharmacyUrl+"/search",pharmacy , {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   searchPharmacyByCustomerNumber(customernumber)
   {
-    return this.http.get<IPharmacy[]>(this._searchPharmacyByNumberUrl+customernumber,  {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.get<IPharmacy[]>(this._pharmacyUrl+"/number="+customernumber,  {headers: {'AuthKey':localStorage.getItem('token')}})
   }
+
   searchOrdersForPharmacy(customernumber)
   {
-    return this.http.get<IOrder[]>(this._searchOrdersForPharmacyUrl+customernumber+"/orders",  {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.get<IOrder[]>(this._pharmacyUrl+customernumber+"/orders",  {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   getOrderById(orderid)

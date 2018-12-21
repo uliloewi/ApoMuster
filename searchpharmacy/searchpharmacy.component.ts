@@ -46,7 +46,7 @@ export class SearchpharmacyComponent implements OnInit {
 
   searchPharmacy() {
     this._event.searchPharmacy(this.pharmacy)
-    .subscribe(data => this.pharmacies = data,
+    .subscribe(data => this.pharmacies = data.Result as IPharmacy[],
       err => console.log(err));
   }
 }

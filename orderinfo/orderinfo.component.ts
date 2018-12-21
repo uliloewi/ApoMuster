@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IOrder } from '../Order';
+import { IOrderItem } from '../OrderItem';
 import { EventService } from '../event.service';
 import { Router,ActivatedRoute  } from '@angular/router'
 
@@ -19,11 +20,11 @@ export class OrderinfoComponent implements OnInit {
     const id = this._router.snapshot.params["id"];
 
     this._event.getOrderById(id)
-    .subscribe(data => this.order = data,
+    .subscribe(data => this.order = data.Result as IOrder,
       err => console.log(err));
 
       this._event.getOrderItemsById(id)
-      .subscribe(data => this.orderitems = data,
+      .subscribe(data => this.orderitems = data.Result as IOrderItem[],
         err => console.log(err));
   }
 

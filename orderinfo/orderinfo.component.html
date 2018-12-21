@@ -6,27 +6,27 @@
 <h2>Information der Bestellung {{order.OrderID}}</h2>
 <h3>{{errorMsg}}</h3>
 <tr>
-  <td>Status:</td>
-  <td >{{order.StateName}}</td>  
+  <td class="tdsearchapo">Status:</td>
+  <td class="tdsearchapo">{{order.StateName}}</td>  
 </tr>
 <tr >
-    <td>Bestellt am:</td>
-    <td >{{order.OrderDate}}</td>
+    <td class="tdsearchapo">Bestellt am:</td>
+    <td class="tdsearchapo">{{order.OrderDate}}</td>
 </tr>
 <tr >
-    <td>Bestellt von:</td>
-    <td >{{order.Aponame}}</td>
+    <td class="tdsearchapo">Bestellt von:</td>
+    <td class="tdsearchapo">{{order.Aponame}}</td>
 </tr>
 <h2>Artikel</h2>
 <tr>
-    <td>Artikelname</td>
-    <td>Menge</td>
+    <td class="tdsearchapo">Artikelname</td>
+    <td class="tdsearchapo">Menge</td>
   </tr>
 <tr *ngFor="let item of orderitems">
-    <td >
+    <td class="tdsearchapo">
         {{item.ProductName}}
     </td>
-    <td >
+    <td class="tdsearchapo">
         {{item.Quantity}}
     </td>       
   </tr>

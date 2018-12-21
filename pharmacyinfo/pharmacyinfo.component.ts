@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IPharmacy } from '../Pharmacy';
 import { EventService } from '../event.service';
 import { Router,ActivatedRoute  } from '@angular/router'
+import { IOrder } from '../Order';
 
 @Component({
   selector: 'app-pharmacyinfo',
@@ -24,11 +25,11 @@ export class PharmacyinfoComponent implements OnInit {
     this.changenumberclicked= false;
 
     this._event.searchPharmacyByCustomerNumber(number)
-    .subscribe(data => this.pharmacy = data[0],
+    .subscribe(data => this.pharmacy = data.Result as IPharmacy,
       err => console.log(err));
 
       this._event.searchOrdersForPharmacy(number)
-      .subscribe(data => this.orders = data,
+      .subscribe(data => this.orders = data.Result as IOrder[],
         err => console.log(err));
   }
 

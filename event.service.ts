@@ -32,26 +32,26 @@ export class EventService {
 
   searchPharmacy(pharmacy)
   {
-    return this.http.post<IPharmacy[]>(this._pharmacyUrl+"/search",pharmacy , {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.post<any>(this._pharmacyUrl+"search",pharmacy , {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   searchPharmacyByCustomerNumber(customernumber)
   {
-    return this.http.get<IPharmacy[]>(this._pharmacyUrl+"/number="+customernumber,  {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.get<any>(this._pharmacyUrl+customernumber,  {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   searchOrdersForPharmacy(customernumber)
   {
-    return this.http.get<IOrder[]>(this._pharmacyUrl+customernumber+"/orders",  {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.get<any>(this._pharmacyUrl+customernumber+"/orders",  {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   getOrderById(orderid)
   {
-    return this.http.get<IOrder>(this._orderUrl+orderid,  {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.get<any>(this._orderUrl+orderid,  {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   getOrderItemsById(orderid)
   {
-    return this.http.get<IOrderItem[]>(this._orderUrl+orderid+"/items",  {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.get<any>(this._orderUrl+orderid+"/items",  {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 }

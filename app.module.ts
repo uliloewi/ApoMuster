@@ -16,6 +16,7 @@ import { ChangeCustomerNumberComponent } from './change-customer-number/change-c
 import { SearchpharmacyComponent } from './searchpharmacy/searchpharmacy.component';
 import { PharmacyinfoComponent } from './pharmacyinfo/pharmacyinfo.component';
 import { OrderinfoComponent } from './orderinfo/orderinfo.component';
+import { PharmacyheaderComponent } from './pharmacyheader/pharmacyheader.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { OrderinfoComponent } from './orderinfo/orderinfo.component';
     ChangeCustomerNumberComponent,
     SearchpharmacyComponent,
     PharmacyinfoComponent,
-    OrderinfoComponent
+    OrderinfoComponent,
+    PharmacyheaderComponent
   ],
   imports: [
     BrowserModule,

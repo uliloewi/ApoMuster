@@ -16,14 +16,6 @@
   </div>
 </div> -->
 
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta content="text/html; charset=UTF-8" name="Content-Type">
-<link rel="icon" href="../../favicon.ico">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
- -->
-<link rel="stylesheet" href="../../assets/css/fontawesome-all.min.css">
-<link rel="stylesheet" href="../../assets/css/animations.css">
-<link rel="stylesheet" href="../../assets/dist/css/main.css" type="text/css">
 <header>
     <div class="container">
         <div class="row">
@@ -54,17 +46,17 @@
             <i class="far fa-times fa-lg"></i>
         </a>
         <div class="top-section text-center">
-            <img src="../assets/images/user.png" alt="" class="img-thumbnail animated bounceInDown loadMenu1" [ngClass]="status ? 'goaway' : 'go'" data-id="1" />
-            <h3 class="animated  fadeIn loadMenu1" [ngClass]="status ? 'goaway' : 'go'" data-id="2">Jan Meister</h3> 
+            <img src="../assets/images/user.png" alt="" class="img-thumbnail animated bounceInDown loadMenu1" data-id="1" />
+            <h3 class="animated  fadeIn loadMenu1" data-id="2">Jan Meister</h3> 
                         
                 <ul>
-                    <li class="animated fadeIn loadMenu1" [ngClass]="status ? 'goaway' : 'go'" data-id="3">
+                    <li class="animated fadeIn loadMenu1" data-id="3">
                         <a href="#"><i class="fal fa-user"></i> Mein Profil</a>
                     </li>
-                    <li *ngIf="!_authService.loggedIn()" class="animated fadeIn loadMenu1" [ngClass]="status ? 'goaway' : 'go'" data-id="4">
+                    <li *ngIf="!_authService.loggedIn()" class="animated fadeIn loadMenu1" data-id="4">
                         <a routerLink="/login" routerLinkActive="active"><i class="fal fa-sign-in"></i> Anmelden</a>                                                             
                     </li>
-                    <li *ngIf="_authService.loggedIn()" class="animated  fadeIn loadMenu1" [ngClass]="status ? 'goaway' : 'go'" data-id="5">                                
+                    <li *ngIf="_authService.loggedIn()" class="animated  fadeIn loadMenu1" data-id="5">                                
                         <a href="#" (click)="_authService.logoutUser()"><i class="fal fa-sign-in"></i> Abmelden</a>
                     </li>
                 </ul>              

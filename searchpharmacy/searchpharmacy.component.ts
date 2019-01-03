@@ -6,7 +6,7 @@ import { IPharmacy } from '../Pharmacy';
 @Component({
   selector: 'app-searchpharmacy',
   templateUrl: './searchpharmacy.component.html',
-  styleUrls: ['./searchpharmacy.component.css']
+  styleUrls: ['./searchpharmacy.component.css','../../assets/css/dashboard.css']
 })
 export class SearchpharmacyComponent implements OnInit {
   public pharmacy:IPharmacy

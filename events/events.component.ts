@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-events',
@@ -7,9 +8,9 @@ import { EventService } from '../event.service';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
-
+  status: boolean = true;
   events = []
-  constructor(private _eventService: EventService) { }
+  constructor(private _eventService: EventService,private _authService: AuthService) { }
 
   ngOnInit() {
     this._eventService.getEvents()
@@ -18,5 +19,7 @@ export class EventsComponent implements OnInit {
         err => console.log(err)
       )
   }
-
+  ChangeClass(){
+    this.status = !this.status;   
+  }
 }

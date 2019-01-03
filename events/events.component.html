@@ -1,4 +1,4 @@
-<div class="row mt-5">
+<!-- <div class="row mt-5">
     <div >
         <h1>Start Page</h1>
       </div>
@@ -14,4 +14,247 @@
       </div>
     </div>
   </div>
+</div> -->
+
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="text/html; charset=UTF-8" name="Content-Type">
+<link rel="icon" href="../../favicon.ico">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ -->
+<link rel="stylesheet" href="../../assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="../../assets/css/animations.css">
+<link rel="stylesheet" href="../../assets/dist/css/main.css" type="text/css">
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-3 col-12">
+                <a href="/"><i class="fal fa-home"></i> Zu noweda.de wechseln</a>
+            </div>
+            <div class="col-lg-7 col-md-9 col-12">
+                <div class="row">
+                    <div class="col-md-4 col-12">
+                        <a href="/"><i class="fal fa-phone"></i> Tel.: 0201/802-1551</a>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <a href="/"><i class="fal fa-fax"></i> Fax.: 0201/802-1519</a>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <a href="mailto:support@noweda.de"><i class="far fa-envelope"></i> support@noweda.de</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="side-navigation" class="sidenav" [ngClass]="status ? '' : 'opened'">
+    
+    <div class="scroll-wrapper">
+        <a (click)="ChangeClass()" class="closebtn animatedClick" data-target='loadMenu1' data-sequence='100' id="menu-icon">
+            <i class="far fa-bars fa-lg"></i>
+            <i class="far fa-times fa-lg"></i>
+        </a>
+        <div class="top-section text-center">
+            <img src="../assets/images/user.png" alt="" class="img-thumbnail animated bounceInDown loadMenu1" [ngClass]="status ? 'goaway' : 'go'" data-id="1" />
+            <h3 class="animated  fadeIn loadMenu1" [ngClass]="status ? 'goaway' : 'go'" data-id="2">Jan Meister</h3> 
+                        
+                <ul>
+                    <li class="animated fadeIn loadMenu1" [ngClass]="status ? 'goaway' : 'go'" data-id="3">
+                        <a href="#"><i class="fal fa-user"></i> Mein Profil</a>
+                    </li>
+                    <li *ngIf="!_authService.loggedIn()" class="animated fadeIn loadMenu1" [ngClass]="status ? 'goaway' : 'go'" data-id="4">
+                        <a routerLink="/login" routerLinkActive="active"><i class="fal fa-sign-in"></i> Anmelden</a>                                                             
+                    </li>
+                    <li *ngIf="_authService.loggedIn()" class="animated  fadeIn loadMenu1" [ngClass]="status ? 'goaway' : 'go'" data-id="5">                                
+                        <a href="#" (click)="_authService.logoutUser()"><i class="fal fa-sign-in"></i> Abmelden</a>
+                    </li>
+                </ul>              
+        </div>
+        <div class="bottom-section">
+            <ul>
+                <li data-id="1">
+                    <a href="#">Noweda Cockpit</a>
+                </li>
+                <li data-id="2">
+                    <a href="#">Sortiment & Vermarktung</a>
+                </li>
+                <li data-id="3">
+                    <a href="#">ApoCademy</a>
+                </li>
+                <li data-id="4">
+                    <a href="#">Marketing / Apocat</a>
+                </li>
+                <li data-id="5">
+                    <a href="#">Meine Zusatzleistungen</a>
+                </li>
+                <li data-id="6">
+                    <a href="#">Digitale Apotheke</a>
+                </li>
+                <li data-id="7">
+                    <a href="#">Aktiv</a>
+                </li>
+                <li data-id="8">
+                    <a href="#">Preiskonzept</a>
+                </li>
+                <li data-id="9">
+                    <a href="#">Shop</a>
+                </li>
+            </ul>
+            <div class="d-lg-none d-xl-none menu-footer">
+                <div class="col-lg-5 col-md-12">
+                    <a href="/"><i class="fal fa-home"></i> Zu noweda.de wechseln</a>
+                </div>
+                <div class="col-lg-7 col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="/"><i class="fal fa-phone"></i> Tel.: 0201/802-1551</a>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="/"><i class="fal fa-fax"></i> Fax.: 0201/802-1519</a>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="mailto:support@noweda.de"><i class="far fa-envelope"></i> support@noweda.de</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<div class="container-fluid">
+    <div class="row animatedParent animateOnce">
+        <div class="col-1 offset-1 d-none d-sm-block">
+            <div class="menu-label">
+                <span>Menü</span>
+            </div>
+        </div>
+        <div class="col-md-8 col-12 col-sm-8 logo-wrapper animated zoomIn">
+            <a href="/">
+                <img src="./assets/images/noweda.jpg" alt="" class="img-fluid" />
+                <h1>Apothekenportal</h1>
+            </a>
+        </div>
+    </div>
+    <div class="row" id="main">
+        <div class="container animatedParent animateOnce" data-sequence="500">
+            <div class="row">
+                <div class="col col-md-6 col-lg-4 animated fadeIn initLoad initLoad go" data-id="1">
+                    <a href="#" class="item">
+                        <span href="#" class="modal-link">
+                            <i class="fal fa-info-circle"></i>
+                        </span>
+                        <h2>NOWEDA Cockpit</h2>
+                        <p>Lesen Sie hier eine kurze aber dreizeilige Blindtext Beschreibung dieses Services. Jetzt lesen.</p>
+                        <img src="./assets/images/img1.jpg" alt="" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="col col-md-6 col-lg-4 animated fadeIn initLoad go" data-id="2">
+                    <a href="#" class="item">
+                        <span href="#" class="modal-link">
+                            <i class="fal fa-info-circle"></i>
+                        </span>
+                        <h2>Sortiment &amp; Vermarktung</h2>
+                        <p>Lessen Sie hier eine kurze aber dreizeilige Blindtext Beschreibung dieses Services. Jetz lesen.</p>
+                        <img src="./assets/images/img2.jpg" alt="" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="col col-md-6 col-lg-4 animated fadeIn initLoad go" data-id="3">
+                    <a href="#" class="item">
+                        <span href="#" class="modal-link">
+                            <i class="fal fa-info-circle"></i>
+                        </span>
+                        <h2>ApoCademy</h2>
+                        <p>Lessen Sie hier eine kurze aber dreizeilige Blindtext Beschreibung dieses Services. Jetz lesen.</p>
+                        <img src="./assets/images/img3.jpg" alt="" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="col col-md-6 col-lg-4 animated fadeIn initLoad go" data-id="4">
+                    <a href="#" class="item">
+                        <span href="#" class="modal-link">
+                            <i class="fal fa-info-circle"></i>
+                        </span>
+                        <h2>Marketing / Apocat</h2>
+                        <p>Lessen Sie hier eine kurze aber dreizeilige Blindtext Beschreibung dieses Services. Jetz lesen.</p>
+                        <img src="./assets/images/img4.jpg" alt="" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="col col-md-6 col-lg-4 animated fadeIn initLoad go" data-id="5">
+                    <a href="#" class="item">
+                        <span href="#" class="modal-link">
+                            <i class="fal fa-info-circle"></i>
+                        </span>
+                        <h2>Meine Zusatzleistungen</h2>
+                        <p>Lessen Sie hier eine kurze aber dreizeilige Blindtext Beschreibung dieses Services. Jetz lesen.</p>
+                        <img src="./assets/images/img5.jpg" alt="" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="col col-md-6 col-lg-4 animated fadeIn initLoad go" data-id="6">
+                    <a href="#" class="item">
+                        <span href="#" class="modal-link">
+                            <i class="fal fa-info-circle"></i>
+                        </span>
+                        <h2>Digitale Apotheke</h2>
+                        <p>Lessen Sie hier eine kurze aber dreizeilige Blindtext Beschreibung dieses Services. Jetz lesen.</p>
+                        <img src="./assets/images/img6.jpg" alt="" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="col col-md-6 col-lg-4 animated fadeIn initLoad go" data-id="7">
+                    <a href="#" class="item">
+                        <span href="#" class="modal-link">
+                            <i class="fal fa-info-circle"></i>
+                        </span>
+                        <h2>Aktiv</h2>
+                        <p>Lessen Sie hier eine kurze aber dreizeilige Blindtext Beschreibung dieses Services. Jetz lesen.</p>
+                        <img src="./assets/images/img7.jpg" alt="" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="col col-md-6 col-lg-4 animated fadeIn initLoad go" data-id="8">
+                    <a href="#" class="item">
+                        <span href="#" class="modal-link">
+                            <i class="fal fa-info-circle"></i>
+                        </span>
+                        <h2>Preiskonzept</h2>
+                        <p>Lessen Sie hier eine kurze aber dreizeilige Blindtext Beschreibung dieses Services. Jetz lesen.</p>
+                        <img src="./assets/images/img8.jpg" alt="" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="col col-md-6 col-lg-4 animated fadeIn initLoad go" data-id="9">
+                    <a href="#" class="item">
+                        <span href="#" class="modal-link">
+                            <i class="fal fa-info-circle"></i>
+                        </span>
+                        <h2>Shop</h2>
+                        <p>Lessen Sie hier eine kurze aber dreizeilige Blindtext Beschreibung dieses Services. Jetz lesen.</p>
+                        <img src="./assets/images/img9.jpg" alt="" class="img-fluid" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-3 text-center copyright">
+                &copy; 2018 NOWEDA
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="row">
+                    <div class="col-md-4 col-12">
+                        <a href="/"><i class="fal fa-info-square fa-lg"></i> Impressum</a>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <a href="/"><i class="far fa-shield fa-lg"></i> Datenschutz</a>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <a href="#"><i class="fal fa-envelope fa-lg"></i> Kontakt</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 text-center">
+                <a href="#" id="gototop"><i class="fa fa-angle-up fa-lg"></i> Zum Seitenanfang</a>
+            </div>
+        </div>
+    </div>
+</footer>

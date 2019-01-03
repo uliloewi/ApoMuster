@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -17,7 +16,6 @@ import { ChangeCustomerNumberComponent } from './change-customer-number/change-c
 import { SearchpharmacyComponent } from './searchpharmacy/searchpharmacy.component';
 import { PharmacyinfoComponent } from './pharmacyinfo/pharmacyinfo.component';
 import { OrderinfoComponent } from './orderinfo/orderinfo.component';
-
 
 @NgModule({
   declarations: [

@@ -1,102 +1,129 @@
-
-
 <app-pharmacyheader></app-pharmacyheader>
-<div  class="box" id="leftmenu">
-    <!-- <tr><a [routerLink]="['/changecustomernumber',pharmacy.Kundennummer]">Kundennummer  aktualisieren</a></tr> -->
-    <tr><button type="button" (click)="changeCustomerNo()" class="menubutton">Kundennummer  aktualisieren</button></tr>
-    <tr><button type="button" class="menubutton">Kundenhistorie</button></tr>
-    <tr><button type="button" (click)="gotoSearchCustomer()" class="menubutton">Kunden suchen</button></tr>
-    <!-- <tr><a [routerLink]="['/searchpharmacy']">Kunden suchen</a></tr> -->
-</div>
-<div class="box">
-    <div>
-    <h2>Information der Apotheke {{pharmacy.Kundennummer}}</h2>
-    <table >
-        <h3>{{errorMsg}}</h3>
-        <tr>
-        <td>Apothekenname:</td>
-        <td >{{pharmacy.ApothekenName}}</td>  
-        </tr>
-        <tr >
-            <td>Ort:</td>
-            <td >{{pharmacy.Ort}}</td>
-        </tr>
-        <tr >
-                <td>Telefonnummer:</td>
-                <td >{{pharmacy.Telefonnummer}}</td>
-            </tr>
-        <tr >
-            <td>Postleitzahl:</td>
-            <td >{{pharmacy.Postleitzahl}}</td>
-        </tr>
-        <tr >
-            <td>Faxnummer:</td>
-            <td >{{pharmacy.Faxnummer}}</td>
-        </tr>
-        <tr >
-            <td>IDFNummer:</td>
-            <td >{{pharmacy.IDFNummer}}</td>
-        </tr>
-        <tr >
-            <td>Straße:</td>
-            <td >{{pharmacy.Strasse}}</td>
-        </tr>
-        <tr >
-            <td>EMail:</td>
-            <td >{{pharmacy.EMail}}</td>
-        </tr>
-        <tr >
-            <td>Apotheker:</td>
-            <td >{{pharmacy.Vorname}} {{pharmacy.Nachname}}</td>
-        </tr>
-        <tr >
-            <td>Betriebsstätte:</td>
-            <td >{{pharmacy.Betriebsstaette}}</td>
-        </tr>
-        <tr >
-            <td>Geburtsdatum:</td>
-            <td >{{pharmacy.Geburtsdatum}}</td>
-        </tr>
-        <tr >
-            <td>Gebietsleiter:</td>
-            <td >{{pharmacy.Gebietsleiter}}</td>
-        </tr>
-    </table>
-    <h2>Bestellungen</h2>
-    <table class="table table-striped table-sm">
-        <thead>
-            <tr>
-                <th >ID</th>
-                <th >Status</th>
-                <th >Datum der Bestellung</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let order of orders">
-                <td >
-                    <a [routerLink]="['/orderinfo', order.OrderID]">{{order.OrderID}}</a>
-                </td>
-                <td >
-                    {{order.StateName}}
-                </td>    
-                <td >
-                    {{order.OrderDate}}
-                </td>    
-            </tr>
-        </tbody>
-    </table>
-    </div>
-    <div *ngIf="changenumberclicked" class="changeCustomerNumberDiv">
-            <h2>Kundennummer ändern</h2>
-            <div class="form-group">
-                <label for="uname1">Alte Nummer</label>
-                <input type="text" class="form-control rounded-0" [(ngModel)]="OldValue" name="oldnumber" required>
-            </div>
-            <div class="form-group">
-                <label>Neue Nummer</label>
-                <input type="text" class="form-control rounded-0" [(ngModel)]="NewValue" name="newnumber" required>
-            </div>
-            <button type="button" (click)="saveToDatabase()" class="btn btn-success float-right">Speichern</button>
+<div class="container-fluid">
+    <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="https://getbootstrap.com/docs/4.0/examples/dashboard/#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"></path><polyline points="2.32 6.16 12 11 21.68 6.16"></polyline><line x1="12" y1="22.76" x2="12" y2="11"></line></svg>
+                                All Products
+                            </a>
+                        </li>
+                        <li class="nav-item" (click)="changeCustomerNo()" >                      
+                            <a  class="nav-link" [routerLink]="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"></path><polyline points="2.32 6.16 12 11 21.68 6.16"></polyline><line x1="12" y1="22.76" x2="12" y2="11"></line></svg>
+                            Kundennummer  aktualisieren
+                            </a>
+                        </li>
+                        <li class="nav-item">                      
+                            <a  class="nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"></path><polyline points="2.32 6.16 12 11 21.68 6.16"></polyline><line x1="12" y1="22.76" x2="12" y2="11"></line></svg>
+                            Kundenhistorie
+                            </a>
+                        </li>
+                        <li class="nav-item">                      
+                            <a  class="nav-link" [routerLink]="['/searchpharmacy']">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"></path><polyline points="2.32 6.16 12 11 21.68 6.16"></polyline><line x1="12" y1="22.76" x2="12" y2="11"></line></svg>
+                            Kunden suchen
+                            </a>
+                        </li>
+                    </ul>              
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">                
+                <div class="box">
+                    <div>
+                    <h2>Information der Apotheke {{pharmacy.Kundennummer}}</h2>
+                    <table >
+                        <h3>{{errorMsg}}</h3>
+                        <tr>
+                        <td>Apothekenname:</td>
+                        <td >{{pharmacy.ApothekenName}}</td>  
+                        </tr>
+                        <tr >
+                            <td>Ort:</td>
+                            <td >{{pharmacy.Ort}}</td>
+                        </tr>
+                        <tr >
+                                <td>Telefonnummer:</td>
+                                <td >{{pharmacy.Telefonnummer}}</td>
+                            </tr>
+                        <tr >
+                            <td>Postleitzahl:</td>
+                            <td >{{pharmacy.Postleitzahl}}</td>
+                        </tr>
+                        <tr >
+                            <td>Faxnummer:</td>
+                            <td >{{pharmacy.Faxnummer}}</td>
+                        </tr>
+                        <tr >
+                            <td>IDFNummer:</td>
+                            <td >{{pharmacy.IDFNummer}}</td>
+                        </tr>
+                        <tr >
+                            <td>Straße:</td>
+                            <td >{{pharmacy.Strasse}}</td>
+                        </tr>
+                        <tr >
+                            <td>EMail:</td>
+                            <td >{{pharmacy.EMail}}</td>
+                        </tr>
+                        <tr >
+                            <td>Apotheker:</td>
+                            <td >{{pharmacy.Vorname}} {{pharmacy.Nachname}}</td>
+                        </tr>
+                        <tr >
+                            <td>Betriebsstätte:</td>
+                            <td >{{pharmacy.Betriebsstaette}}</td>
+                        </tr>
+                        <tr >
+                            <td>Geburtsdatum:</td>
+                            <td >{{pharmacy.Geburtsdatum}}</td>
+                        </tr>
+                        <tr >
+                            <td>Gebietsleiter:</td>
+                            <td >{{pharmacy.Gebietsleiter}}</td>
+                        </tr>
+                    </table>
+                    <h2>Bestellungen</h2>
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th >ID</th>
+                                <th >Status</th>
+                                <th >Datum der Bestellung</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let order of orders">
+                                <td >
+                                    <a [routerLink]="['/orderinfo', order.OrderID]">{{order.OrderID}}</a>
+                                </td>
+                                <td >
+                                    {{order.StateName}}
+                                </td>    
+                                <td >
+                                    {{order.OrderDate}}
+                                </td>    
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <div *ngIf="changenumberclicked" class="changeCustomerNumberDiv">
+                            <h2>Kundennummer ändern</h2>
+                            <div class="form-group">
+                                <label for="uname1">Alte Nummer</label>
+                                <input type="text" class="form-control rounded-0" [(ngModel)]="OldValue" name="oldnumber" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Neue Nummer</label>
+                                <input type="text" class="form-control rounded-0" [(ngModel)]="NewValue" name="newnumber" required>
+                            </div>
+                            <button type="button" (click)="saveToDatabase()" class="btn btn-success float-right">Speichern</button>
+                    </div>
+                </div>
+            </main>
     </div>
 </div>
 

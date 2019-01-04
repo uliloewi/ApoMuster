@@ -7,7 +7,7 @@ import { Router,ActivatedRoute  } from '@angular/router'
 @Component({
   selector: 'app-orderinfo',
   templateUrl: './orderinfo.component.html',
-  styleUrls: ['./orderinfo.component.css']
+  styleUrls: ['./orderinfo.component.css','../../assets/css/dashboard.css']
 })
 export class OrderinfoComponent implements OnInit {
   public order:IOrder

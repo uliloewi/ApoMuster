@@ -7,7 +7,7 @@ import { IOrder } from '../Order';
 @Component({
   selector: 'app-pharmacyinfo',
   templateUrl: './pharmacyinfo.component.html',
-  styleUrls: ['./pharmacyinfo.component.css']
+  styleUrls: ['./pharmacyinfo.component.css','../../assets/css/dashboard.css']
 })
 export class PharmacyinfoComponent implements OnInit {
 

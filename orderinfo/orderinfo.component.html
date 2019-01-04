@@ -1,9 +1,11 @@
+<app-pharmacyheader></app-pharmacyheader>
 <div  class="box" id="leftmenu">
     <tr><a [routerLink]="['/searchpharmacy']">Kunden suchen</a></tr>
 </div>
 <div  class="box" >
 
-<h2>Information der Bestellung {{order.OrderID}}</h2>
+<h2>Information über Bestellung {{order.OrderID}}</h2>
+<table>
 <h3>{{errorMsg}}</h3>
 <tr>
   <td class="tdsearchapo">Status:</td>
@@ -17,17 +19,24 @@
     <td class="tdsearchapo">Bestellt von:</td>
     <td class="tdsearchapo">{{order.Aponame}}</td>
 </tr>
+</table>
 <h2>Artikel</h2>
-<tr>
-    <td class="tdsearchapo">Artikelname</td>
-    <td class="tdsearchapo">Menge</td>
-  </tr>
-<tr *ngFor="let item of orderitems">
-    <td class="tdsearchapo">
-        {{item.ProductName}}
-    </td>
-    <td class="tdsearchapo">
-        {{item.Quantity}}
-    </td>       
-  </tr>
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th >Artikelname</th>
+        <th >Menge</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of orderitems">
+        <td >
+            {{item.ProductName}}
+        </td>
+        <td >
+            {{item.Quantity}}
+        </td>       
+      </tr>
+    </tbody>
+  </table>
 </div>

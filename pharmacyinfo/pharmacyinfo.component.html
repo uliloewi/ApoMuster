@@ -1,6 +1,6 @@
 
 
-
+<app-pharmacyheader></app-pharmacyheader>
 <div  class="box" id="leftmenu">
     <!-- <tr><a [routerLink]="['/changecustomernumber',pharmacy.Kundennummer]">Kundennummer  aktualisieren</a></tr> -->
     <tr><button type="button" (click)="changeCustomerNo()" class="menubutton">Kundennummer  aktualisieren</button></tr>
@@ -11,72 +11,80 @@
 <div class="box">
     <div>
     <h2>Information der Apotheke {{pharmacy.Kundennummer}}</h2>
-    <h3>{{errorMsg}}</h3>
-    <tr>
-    <td>Apothekenname:</td>
-    <td >{{pharmacy.ApothekenName}}</td>  
-    </tr>
-    <tr >
-        <td>Ort:</td>
-        <td >{{pharmacy.Ort}}</td>
-    </tr>
-    <tr >
-            <td>Telefonnummer:</td>
-            <td >{{pharmacy.Telefonnummer}}</td>
+    <table >
+        <h3>{{errorMsg}}</h3>
+        <tr>
+        <td>Apothekenname:</td>
+        <td >{{pharmacy.ApothekenName}}</td>  
         </tr>
-    <tr >
-        <td>Postleitzahl:</td>
-        <td >{{pharmacy.Postleitzahl}}</td>
-    </tr>
-    <tr >
-        <td>Faxnummer:</td>
-        <td >{{pharmacy.Faxnummer}}</td>
-    </tr>
-    <tr >
-        <td>IDFNummer:</td>
-        <td >{{pharmacy.IDFNummer}}</td>
-    </tr>
-    <tr >
-        <td>Straße:</td>
-        <td >{{pharmacy.Strasse}}</td>
-    </tr>
-    <tr >
-        <td>EMail:</td>
-        <td >{{pharmacy.EMail}}</td>
-    </tr>
-    <tr >
-        <td>Apotheker:</td>
-        <td >{{pharmacy.Vorname}} {{pharmacy.Nachname}}</td>
-    </tr>
-    <tr >
-        <td>Betriebsstätte:</td>
-        <td >{{pharmacy.Betriebsstaette}}</td>
-    </tr>
-    <tr >
-        <td>Geburtsdatum:</td>
-        <td >{{pharmacy.Geburtsdatum}}</td>
-    </tr>
-    <tr >
-        <td>Gebietsleiter:</td>
-        <td >{{pharmacy.Gebietsleiter}}</td>
-    </tr>
+        <tr >
+            <td>Ort:</td>
+            <td >{{pharmacy.Ort}}</td>
+        </tr>
+        <tr >
+                <td>Telefonnummer:</td>
+                <td >{{pharmacy.Telefonnummer}}</td>
+            </tr>
+        <tr >
+            <td>Postleitzahl:</td>
+            <td >{{pharmacy.Postleitzahl}}</td>
+        </tr>
+        <tr >
+            <td>Faxnummer:</td>
+            <td >{{pharmacy.Faxnummer}}</td>
+        </tr>
+        <tr >
+            <td>IDFNummer:</td>
+            <td >{{pharmacy.IDFNummer}}</td>
+        </tr>
+        <tr >
+            <td>Straße:</td>
+            <td >{{pharmacy.Strasse}}</td>
+        </tr>
+        <tr >
+            <td>EMail:</td>
+            <td >{{pharmacy.EMail}}</td>
+        </tr>
+        <tr >
+            <td>Apotheker:</td>
+            <td >{{pharmacy.Vorname}} {{pharmacy.Nachname}}</td>
+        </tr>
+        <tr >
+            <td>Betriebsstätte:</td>
+            <td >{{pharmacy.Betriebsstaette}}</td>
+        </tr>
+        <tr >
+            <td>Geburtsdatum:</td>
+            <td >{{pharmacy.Geburtsdatum}}</td>
+        </tr>
+        <tr >
+            <td>Gebietsleiter:</td>
+            <td >{{pharmacy.Gebietsleiter}}</td>
+        </tr>
+    </table>
     <h2>Bestellungen</h2>
-    <tr>
-        <td class="tdsearchapo">ID</td>
-        <td class="tdsearchapo">Status</td>
-        <td class="tdsearchapo">Datum der Bestellung</td>
-    </tr>
-    <tr *ngFor="let order of orders">
-        <td class="tdsearchapo">
-            <a [routerLink]="['/orderinfo', order.OrderID]">{{order.OrderID}}</a>
-        </td>
-        <td class="tdsearchapo">
-            {{order.StateName}}
-        </td>    
-        <td class="tdsearchapo">
-            {{order.OrderDate}}
-        </td>    
-    </tr>
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th >ID</th>
+                <th >Status</th>
+                <th >Datum der Bestellung</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td >
+                    <a [routerLink]="['/orderinfo', order.OrderID]">{{order.OrderID}}</a>
+                </td>
+                <td >
+                    {{order.StateName}}
+                </td>    
+                <td >
+                    {{order.OrderDate}}
+                </td>    
+            </tr>
+        </tbody>
+    </table>
     </div>
     <div *ngIf="changenumberclicked" class="changeCustomerNumberDiv">
             <h2>Kundennummer ändern</h2>

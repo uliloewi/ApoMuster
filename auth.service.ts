@@ -37,7 +37,8 @@ export class AuthService {
   }
 
   loggedIn() {    
-    var ss = localStorage.getItem('token') 
-    return ss!==null && !ss    
+    var ss = localStorage.getItem('token')
+    var rem=ss!==null && ss!=="" && ss!=="null" ;
+    return rem
   }
 }

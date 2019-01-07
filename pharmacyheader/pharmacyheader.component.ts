@@ -12,7 +12,7 @@ export class PharmacyheaderComponent implements OnInit {
   constructor(private _authService: AuthService) { }
 
   ngOnInit() {
-    this.username= localStorage.getItem("username")
+    this.username= localStorage.getItem("username");
   }
 
 }

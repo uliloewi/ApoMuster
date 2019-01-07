@@ -1,8 +1,3 @@
-<!-- <p>
-  pharmacyheader works!
-</p> -->
-
-
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
         <img src="../../assets/images/noweda.jpg" alt="" class="img-fluid" />
@@ -12,7 +7,7 @@
     <label *ngIf="username != 'Bitte prüfen Sie Ihre Logindaten'" style="color:rgba(255,255,255,.5);margin-top:8px;">{{username}}</label>
     <ul class="navbar-nav px-3">            
         <li  class="nav-item text-nowrap">
-            <a  *ngIf="username != 'Bitte prüfen Sie Ihre Logindaten'; else otherlink" class="nav-link" href="#" (click)="_authService.logoutUser()">Abmelden</a>
+            <a  *ngIf="username != null &&username != 'Bitte prüfen Sie Ihre Logindaten' && username != ''; else otherlink" class="nav-link" href="#" (click)="_authService.logoutUser()">Abmelden</a>
             <ng-template #otherlink>
                 <a  class="nav-link" routerLink="/login" >Anmelden</a>
             </ng-template>

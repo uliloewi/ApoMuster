@@ -22,9 +22,14 @@ export class LoginComponent implements OnInit {
     this._auth.loginUser(this.loginUserData)
     .subscribe(
       res => {
-        localStorage.setItem('token', res.Result)
-        localStorage.setItem('username', res.Msg)
-        this._router.navigate(['/searchpharmacy'])
+        localStorage.setItem('token', res.Result);
+        localStorage.setItem('username', res.Msg);
+        if (res.Result !== null) {
+          this._router.navigate(['/searchpharmacy'])
+        }
+        else{
+          alert("Fehler bei der Anmeldung!");
+        }
       },
       err => console.log(err)
     ) 

@@ -45,8 +45,17 @@ export class PharmacyinfoComponent implements OnInit {
   saveToDatabase () {
     var NumberPair={ "OldValue":this.OldValue, "NewValue":this.NewValue}
     this._event.SaveNewCustomerNumber(NumberPair)
-    .subscribe(      err => console.log(err)    ) 
-    this.changenumberclicked= false;
+    .subscribe(   
+      res => {                              
+        if (res != "Die neue Kundennummer wurde gespeichert."){
+          alert(res);
+        }
+        else{
+          this.changenumberclicked= false;
+        }    
+    },
+    err => console.log(err)
+    )     
   }
 
   gotoSearchCustomer(){

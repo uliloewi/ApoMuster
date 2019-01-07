@@ -28,6 +28,7 @@ export class AuthService {
 
   logoutUser() {
     localStorage.removeItem('token')
+    localStorage.removeItem("username")
     this._router.navigate(['/events'])
   }
 
@@ -35,7 +36,8 @@ export class AuthService {
     return localStorage.getItem('token')
   }
 
-  loggedIn() {
-    return !!localStorage.getItem('token')    
+  loggedIn() {    
+    var ss = localStorage.getItem('token') 
+    return ss!==null && !ss    
   }
 }

@@ -4,7 +4,6 @@ import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component'
 import { EventsComponent } from './events/events.component';
 import { SpecialEventsComponent } from './special-events/special-events.component';
-import { ChangeCustomerNumberComponent } from './change-customer-number/change-customer-number.component';
 import { SearchpharmacyComponent } from './searchpharmacy/searchpharmacy.component';
 import { PharmacyinfoComponent } from './pharmacyinfo/pharmacyinfo.component';
 import { OrderinfoComponent } from './orderinfo/orderinfo.component';
@@ -19,10 +18,6 @@ const routes: Routes = [
   {
     path: 'events',
     component: EventsComponent
-  },
-  {
-    path: 'changecustomernumber/:oldnumber',
-    component: ChangeCustomerNumberComponent
   },
   {
     path: 'searchpharmacy',

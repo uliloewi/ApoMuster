@@ -8,9 +8,11 @@ import { AuthService } from '../auth.service';
 })
 export class PharmacyheaderComponent implements OnInit {
 
+  username:string
   constructor(private _authService: AuthService) { }
 
   ngOnInit() {
+    this.username= localStorage.getItem("username")
   }
 
 }

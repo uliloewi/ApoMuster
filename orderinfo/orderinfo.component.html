@@ -1,24 +1,7 @@
 <app-pharmacyheader></app-pharmacyheader>
 <div class="container-fluid">
     <div class="row">
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-              <ul class="nav flex-column">
-                  <li class="nav-item">
-                      <a class="nav-link active" href="https://getbootstrap.com/docs/4.0/examples/dashboard/#">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"></path><polyline points="2.32 6.16 12 11 21.68 6.16"></polyline><line x1="12" y1="22.76" x2="12" y2="11"></line></svg>
-                          All Products
-                      </a>
-                  </li>
-                  <li class="nav-item">                      
-                      <a  class="nav-link" [routerLink]="['/searchpharmacy']">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"></path><polyline points="2.32 6.16 12 11 21.68 6.16"></polyline><line x1="12" y1="22.76" x2="12" y2="11"></line></svg>
-                        Kunden suchen
-                      </a>
-                  </li>
-              </ul>              
-          </div>
-      </nav>
+      <app-pharmacyleftmenu></app-pharmacyleftmenu>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
         
         <div  class="box" >
@@ -26,19 +9,19 @@
 
 
         <h2>Information über Bestellung {{order.OrderID}}</h2>
-        <table>
+        <table  class="table table-sm">
         <h3>{{errorMsg}}</h3>
         <tr>
-          <td class="tdsearchapo">Status:</td>
-          <td class="tdsearchapo">{{order.StateName}}</td>  
+          <td >Status: </td>
+          <td >{{order.StateName}}</td>  
         </tr>
         <tr >
-            <td class="tdsearchapo">Bestellt am:</td>
-            <td class="tdsearchapo">{{order.OrderDate}}</td>
+            <td >Bestellt am: </td>
+            <td >{{order.OrderDate}}</td>
         </tr>
         <tr >
-            <td class="tdsearchapo">Bestellt von:</td>
-            <td class="tdsearchapo">{{order.Aponame}}</td>
+            <td >Bestellt von: </td>
+            <td >{{order.Aponame}}</td>
         </tr>
         </table>
         <h2>Artikel</h2>

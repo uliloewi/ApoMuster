@@ -1,83 +1,85 @@
 <app-pharmacyheader></app-pharmacyheader>
-<div class="py-5">
-  <div class="row">
-    <div class="col-md-6 mx-auto">
-      <span class="anchor"></span>
-
-      <!-- form card login -->
-      <div class="card rounded-0 searchapo">
-        <div class="card-header">
-          <h3 class="mb-0">Kunden Suchen</h3>
-        </div>
-        <div class="card-body">
-          <form class="form">
-            <div class="form-group">
-              <label>Kundennummer</label>
-              <input type="text" class="form-control rounded-0" [(ngModel)]="pharmacy.Kundennummer" name="customernumber" >
-            </div>
-            <div class="form-group">
-              <label>Apothekename</label>
-              <input type="text" class="form-control rounded-0" [(ngModel)]="pharmacy.ApothekenName" name="pharmacyname" >              
-            </div>
-            <div class="form-group">
-                <label>Ort</label>
-                <input type="text" class="form-control rounded-0" [(ngModel)]="pharmacy.Ort" name="city" >              
-              </div>
-              <div class="form-group">
-                  <label>PLZ</label>
-                  <input type="text" class="form-control rounded-0" [(ngModel)]="pharmacy.Postleitzahl" name="PostalCode" >              
+<div class="container-fluid">
+    <div class="row">
+      <app-pharmacyleftmenu></app-pharmacyleftmenu>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="box"> 
+          <h2 >Kunden Suchen</h2>          
+          <div class="card-body">
+            <form class="form">
+              <div style="margin-bottom: 120px;">
+                <div class="row">                      
+                  <label class="labelsearch">Kundennummer: </label>
+                  <div class="form-group">
+                    <input type="text" class="form-control rounded-0" [(ngModel)]="pharmacy.Kundennummer" name="customernumber" >
+                  </div>
+                  
+                  <label  class="labelsearch">Apothekename: </label>
+                  <div class="form-group">
+                    <input type="text" class="form-control rounded-0" [(ngModel)]="pharmacy.ApothekenName" name="pharmacyname" >              
+                  </div>
                 </div>
-            <div>
-                <button type="button" (click)="searchPharmacy()" class="btn btn-success float-right">Suche</button>
-            </div>
-            <div *ngIf="pharmacies.length > 0">
-              <h2>Gefundene Apotheken</h2>
-              <table class="table table-striped table-sm">
-                  <h3>{{errorMsg}}</h3>
-                  <thead>
-                    <tr>                    
-                      <th >Kundennummer</th>
-                      <th >Apotheke</th>
-                      <th>Apotheker</th>
-                      <th>Straße</th>
-                      <th>Ort</th>
-                      <th >PLZ</th>
-                      <th>Haus</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let ph of pharmacies">
-                      <td  >
-                          <a [routerLink]="['/pharmacyinfo', ph.Kundennummer]">{{ph.Kundennummer}}</a>
-                      </td>                     
-                      <td  >
-                          {{ph.ApothekenName}}
-                      </td>
-                      <td  >
-                          {{ph.Gebietsleiter}}
-                      </td>
-                      <td  >
-                          {{ph.Strasse}}
-                      </td>
-                      <td  >
-                          {{ph.Ort}}
-                      </td>
-                      <td  >
-                          {{ph.Postleitzahl}}
-                      </td>
-                      <td  >
-                          {{ph.Betriebsstaette}}
-                      </td> 
-                    </tr>
-                  </tbody>
-              </table>
-            </div>
-           
-          </form>
+                <div class="row">                      
+                    <label class="labelsearch">Ort: </label>
+                    <div class="form-group">
+                      <input type="text" class="form-control rounded-0" [(ngModel)]="pharmacy.Ort" name="city" >              
+                    </div>
+                    
+                    <label class="labelsearch">PLZ :</label>
+                    <div class="form-group">
+                        <input type="text" class="form-control rounded-0" [(ngModel)]="pharmacy.Postleitzahl" name="PostalCode" >              
+                      </div>
+                    </div>
+                  <div>
+                    <button type="button" (click)="searchPharmacy()" class="btn btn-success float-right">Suche</button>
+                </div>
+              </div>
+              <div *ngIf="pharmacies.length > 0">
+                <h2>Gefundene Apotheken</h2>
+                <table class="table table-striped table-sm">
+                    <h3>{{errorMsg}}</h3>
+                    <thead>
+                      <tr>                    
+                        <th >Kundennummer</th>
+                        <th >Apotheke</th>
+                        <th>Apotheker</th>
+                        <th>Straße</th>
+                        <th>Ort</th>
+                        <th >PLZ</th>
+                        <th>Haus</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let ph of pharmacies">
+                        <td  >
+                            <a [routerLink]="['/pharmacyinfo', ph.Kundennummer]" target="_blank">{{ph.Kundennummer}}</a>
+                        </td>                     
+                        <td  >
+                            {{ph.ApothekenName}}
+                        </td>
+                        <td  >
+                            {{ph.Gebietsleiter}}
+                        </td>
+                        <td  >
+                            {{ph.Strasse}}
+                        </td>
+                        <td  >
+                            {{ph.Ort}}
+                        </td>
+                        <td  >
+                            {{ph.Postleitzahl}}
+                        </td>
+                        <td  >
+                            {{ph.Betriebsstaette}}
+                        </td> 
+                      </tr>
+                    </tbody>
+                </table>
+              </div>
+            
+            </form>
+          </div>  
         </div>
-        <!--/card-block-->
-      </div>
-      <!-- /form card login -->
+      </main>
     </div>
-  </div>
 </div>

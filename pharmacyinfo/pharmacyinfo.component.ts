@@ -38,6 +38,10 @@ export class PharmacyinfoComponent implements OnInit {
     this.changenumberclicked= true;
   }
 
+  cancelChange(){
+    this.changenumberclicked= false;
+  }
+
   saveToDatabase () {
     var NumberPair={ "OldValue":this.OldValue, "NewValue":this.NewValue}
     this._event.SaveNewCustomerNumber(NumberPair)

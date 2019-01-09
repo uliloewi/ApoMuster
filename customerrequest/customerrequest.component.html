@@ -1,0 +1,39 @@
+<app-pharmacyheader></app-pharmacyheader>
+<div class="container-fluid">
+    <div class="row">
+        <app-pharmacyleftmenu></app-pharmacyleftmenu>   
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">   
+            <div class="box">
+                <h2 >Neue Anfrage von Apotheke {{customerNumber}}</h2> 
+                <div class="card-body">
+                    <div style="margin-bottom: 120px;">
+                        <div class="row">                      
+                            <label class="labelsearch">Kontaktmedium: </label>                                     
+                            <select  [(ngModel)]="cr.ContactMediumTypeID">  
+                                <option *ngFor="let m of mediums" [ngValue]="m.ID">{{m.Caption}}</option>
+                            </select>
+                        </div>
+                        <div class="row">  
+                            <label class="labelsearch">Thema: </label>       
+                                            
+                            <select [(ngModel)]="cr.RequestTypeID">       
+                                <option *ngFor="let t of titletypes" [ngValue]="t.ID">{{t.Caption}}</option>        
+                            </select>
+                        </div>
+                        <div >  
+                            <label>Inhalt: </label>
+                        </div>
+                        <div class="row"> 
+                            <textarea [(ngModel)]="cr.Content">                                            
+                            </textarea> 
+                        </div>
+                        <div>  
+                            <button type="button" (click)="saveToDatabase()" class="btn btn-success float-right">Speichern</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+

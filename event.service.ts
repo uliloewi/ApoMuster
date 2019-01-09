@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { IOrder } from './Order';
-import { IOrderItem } from './OrderItem';
+import { IRequest } from './Request';
 import { IPharmacy } from './Pharmacy';
 
 @Injectable()
 export class EventService {
+  
+
   public pharm:IPharmacy;
   private _eventsUrl = "http://localhost:3000/api/events";
   private _saveNewValueUrl = "http://localhost:54703/api/v1/audittrails"; //Yu Li v1
@@ -25,11 +27,24 @@ export class EventService {
    })
   }
 
+  getContactMediumType(): any {
+    return this.http.get<any>("http://localhost:54703/api2/ContactMediumType/",  {headers: {'AuthKey':localStorage.getItem('token')}})
+  }
+
+  getRequestType(): any {
+    return this.http.get<any>("http://localhost:54703/api2/RequestType/",  {headers: {'AuthKey':localStorage.getItem('token')}})
+  }
+
   SaveNewCustomerNumber(valuepair)
   {
     return this.http.post<any>(this._saveNewValueUrl, valuepair, {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
+  SaveNewCustomerRequest(cutomerRequest,customernumber)
+  {
+    return this.http.post<any>(this._pharmacyUrl+customernumber+"/requests", cutomerRequest, {headers: {'AuthKey':localStorage.getItem('token')}})
+  }
+l
   searchPharmacy(pharmacy)
   {
     return this.http.post<any>(this._pharmacyUrl+"search",pharmacy , {headers: {'AuthKey':localStorage.getItem('token')}})

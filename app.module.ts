@@ -17,6 +17,7 @@ import { PharmacyinfoComponent } from './pharmacyinfo/pharmacyinfo.component';
 import { OrderinfoComponent } from './orderinfo/orderinfo.component';
 import { PharmacyheaderComponent } from './pharmacyheader/pharmacyheader.component';
 import { PharmacyleftmenuComponent } from './pharmacyleftmenu/pharmacyleftmenu.component';
+import { CustomerrequestComponent } from './customerrequest/customerrequest.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PharmacyleftmenuComponent } from './pharmacyleftmenu/pharmacyleftmenu.c
     PharmacyinfoComponent,
     OrderinfoComponent,
     PharmacyheaderComponent,
-    PharmacyleftmenuComponent
+    PharmacyleftmenuComponent,
+    CustomerrequestComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { SpecialEventsComponent } from './special-events/special-events.componen
 import { SearchpharmacyComponent } from './searchpharmacy/searchpharmacy.component';
 import { PharmacyinfoComponent } from './pharmacyinfo/pharmacyinfo.component';
 import { OrderinfoComponent } from './orderinfo/orderinfo.component';
+import { CustomerrequestComponent } from './customerrequest/customerrequest.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -43,7 +44,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
-  }
+  },
+  {
+    path: 'customerrequest/:number',
+    component: CustomerrequestComponent
+  },
 ];
 
 @NgModule({

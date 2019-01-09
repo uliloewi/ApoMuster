@@ -17,7 +17,7 @@ export class PharmacyleftmenuComponent implements OnInit {
   }
 
   changeCustomerNo(){
-    this.ph.changeCustomerNo();
+    this.ph.changeCustomerNo();    
   }
 
 }

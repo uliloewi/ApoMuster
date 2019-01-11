@@ -26,13 +26,13 @@ export class EventService {
    })
   }
 
-  getContactMediumType(): any {
+ /*  getContactMediumType(): any {
     return this.http.get<any>("http://localhost:54703/api2/ContactMediumType/",  {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   getRequestType(): any {
     return this.http.get<any>("http://localhost:54703/api2/RequestType/",  {headers: {'AuthKey':localStorage.getItem('token')}})
-  }
+  } */
 
   SaveNewCustomerNumber(valuepair)
   {

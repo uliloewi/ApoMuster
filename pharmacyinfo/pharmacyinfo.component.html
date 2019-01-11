@@ -109,7 +109,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let rq of this.requests | orderBy: RequestID : true" (click)="showRequest(rq.RequestID)">
+                                <tr class="trlikelink" *ngFor="let rq of this.requests | orderBy: RequestID : true" (click)="showRequest(rq.RequestID)">
                                     <td >
                                         {{rq.CreatorFirstName}} {{rq.CreatorLastName}}
                                     </td>

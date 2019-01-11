@@ -1,0 +1,5 @@
+.trlikelink:hover {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}

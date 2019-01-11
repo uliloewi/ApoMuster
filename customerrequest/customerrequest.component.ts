@@ -26,13 +26,6 @@ export class CustomerrequestComponent implements OnInit {
     if (this._activeroute.snapshot.queryParams.RequestID !== undefined ) {
        this.cr= this._activeroute.snapshot.queryParams as IRequest;
     }
-    this._event.getContactMediumType()
-    .subscribe(data => this.mediums = data.Result as IDAndCaption[],
-      err => console.log(err));
-
-    this._event.getRequestType()
-      .subscribe(data => this.titletypes = data.Result as IDAndCaption[],
-        err => console.log(err));
   }
 
   saveToDatabase () {

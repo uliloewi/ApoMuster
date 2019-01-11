@@ -1,7 +1,7 @@
 <app-pharmacyheader></app-pharmacyheader>
 <div class="container-fluid">
     <div class="row">
-        <app-pharmacyleftmenu></app-pharmacyleftmenu>   
+        <app-pharmacyleftmenu></app-pharmacyleftmenu>        
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">   
             <div class="box">
                 <h2 >Neue Anfrage von Apotheke {{customerNumber}}</h2> 
@@ -12,17 +12,27 @@
                     <div style="margin-bottom: 120px;" contentEditable="false">
                         <div class="row">                      
                             <label class="labelsearch">Kontaktmedium: </label>                                     
-                            <select  [(ngModel)]="cr.ContactMediumTypeID" [ngStyle]="{'border-color': hint.startsWith('Bitte') && cr.ContactMediumTypeID=='0' ? 'red' : ''}">      
-                                <option *ngFor="let m of mediums" [ngValue]="m.ID">{{m.Caption}}</option>
+                            <select [attr.disabled]="saved ||cr.RequestID>0 ? '' : null" [(ngModel)]="cr.ContactMediumTypeID" [ngStyle]="{'border-color': hint.startsWith('Bitte') && cr.ContactMediumTypeID=='0' ? 'red' : ''}">                                      
+                                <option value="1">Telefon Landline</option>
+                                <option value="2">Mobiltelefon</option>
+                                <option value="3">Telefax</option>
+                                <option value="4">Email</option>
+                                <option value="5">Webseite</option>
+                                <option value="6">Zusätzliche Webseite</option>
+                                <option value="7">Kundenmail</option>
                             </select>
                         </div>
                         <div class="row">  
-                            <label class="labelsearch">Thema: </label>       
-                                            
-                            <select  [(ngModel)]="cr.RequestTypeID" [ngStyle]="{'border-color': hint.startsWith('Bitte') && cr.RequestTypeID=='0' ? 'red' : ''}">  
-                                <option *ngFor="let t of titletypes" [ngValue]="t.ID">{{t.Caption}}</option>        
+                            <label class="labelsearch">Thema: </label>                                                   
+                            <select [attr.disabled]="saved ||cr.RequestID>0 ? '' : null" [(ngModel)]="cr.RequestTypeID" [ngStyle]="{'border-color': hint.startsWith('Bitte') && cr.RequestTypeID=='0' ? 'red' : ''}">                                  
+                                <option value="1">Abrechnung</option>
+                                <option value="2">Auftrag</option>
+                                <option value="3">Stammdaten</option>
+                                <option value="4">Lieferung</option>
+                                <option value="5">Informationsbedarf</option>
+                                <option value="6">Sonstige</option>
                             </select>
-                        </div>
+                        </div> 
                         <div >  
                             <label>Inhalt: </label>
                         </div>

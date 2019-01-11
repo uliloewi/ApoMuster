@@ -1,4 +1,4 @@
 export interface IDAndCaption {    
-    ID: number,
+    ID: string,
     Caption: string
 }

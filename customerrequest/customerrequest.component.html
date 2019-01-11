@@ -5,18 +5,21 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">   
             <div class="box">
                 <h2 >Neue Anfrage von Apotheke {{customerNumber}}</h2> 
+                <div *ngIf="hint!=''" style="text-align: center;">
+                    <label [ngStyle]="{'color': hint.startsWith('Bitte') ? 'red' : 'black'}">{{hint}}</label>
+                </div>
                 <div class="card-body">
-                    <div style="margin-bottom: 120px;">
+                    <div style="margin-bottom: 120px;" contentEditable="false">
                         <div class="row">                      
                             <label class="labelsearch">Kontaktmedium: </label>                                     
-                            <select  [(ngModel)]="cr.ContactMediumTypeID">  
+                            <select  [(ngModel)]="cr.ContactMediumTypeID" [ngStyle]="{'border-color': hint.startsWith('Bitte') && cr.ContactMediumTypeID=='0' ? 'red' : ''}">      
                                 <option *ngFor="let m of mediums" [ngValue]="m.ID">{{m.Caption}}</option>
                             </select>
                         </div>
                         <div class="row">  
                             <label class="labelsearch">Thema: </label>       
                                             
-                            <select [(ngModel)]="cr.RequestTypeID">       
+                            <select  [(ngModel)]="cr.RequestTypeID" [ngStyle]="{'border-color': hint.startsWith('Bitte') && cr.RequestTypeID=='0' ? 'red' : ''}">  
                                 <option *ngFor="let t of titletypes" [ngValue]="t.ID">{{t.Caption}}</option>        
                             </select>
                         </div>
@@ -24,11 +27,12 @@
                             <label>Inhalt: </label>
                         </div>
                         <div class="row"> 
-                            <textarea [(ngModel)]="cr.Content">                                            
+                            <textarea [attr.disabled]="saved ||cr.RequestID>0 ? '' : null"  [(ngModel)]="cr.Content" [ngStyle]="{'border-color': hint.startsWith('Bitte') && (cr.Content==null || cr.Content=='') ? 'red' : ''}">                                            
                             </textarea> 
                         </div>
                         <div>  
-                            <button type="button" (click)="saveToDatabase()" class="btn btn-success float-right">Speichern</button>
+                            <button type="button" (click)="saveToDatabase()" class="btn btn-success float-right" [attr.disabled]="saved ||cr.RequestID>0 ? '' : null"  >Speichern</button>                        
+                            <button type="button" (click)="backClicked()" class="btn btn-success float-right" style="margin-right:10px;">Zurück</button>
                         </div>
                     </div>
                 </div>

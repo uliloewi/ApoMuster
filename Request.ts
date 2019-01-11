@@ -4,8 +4,13 @@ export interface IRequest {
     DateReceived? :String    
     DateResolved? :String    
     RequestTypeID :String    
+    RequestType? :String    
     RequestStatusID? :String    
     Content? :String    
     ContactMediumTypeID :String
+    ContactMediumType? :String
+    CreatedBy :String
+    CreatorFirstName?:String
+    CreatorLastName?:String
 }
 

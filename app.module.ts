@@ -18,6 +18,7 @@ import { OrderinfoComponent } from './orderinfo/orderinfo.component';
 import { PharmacyheaderComponent } from './pharmacyheader/pharmacyheader.component';
 import { PharmacyleftmenuComponent } from './pharmacyleftmenu/pharmacyleftmenu.component';
 import { CustomerrequestComponent } from './customerrequest/customerrequest.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CustomerrequestComponent } from './customerrequest/customerrequest.comp
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    OrderModule
   ],
   providers: [AuthService, AuthGuard, EventService, 
   {

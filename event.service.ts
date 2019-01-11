@@ -7,7 +7,6 @@ import { IPharmacy } from './Pharmacy';
 @Injectable()
 export class EventService {
   
-
   public pharm:IPharmacy;
   private _eventsUrl = "http://localhost:3000/api/events";
   private _saveNewValueUrl = "http://localhost:54703/api/v1/audittrails"; //Yu Li v1
@@ -44,7 +43,11 @@ export class EventService {
   {
     return this.http.post<any>(this._pharmacyUrl+customernumber+"/requests", cutomerRequest, {headers: {'AuthKey':localStorage.getItem('token')}})
   }
-l
+
+  getRequests(customernumber): any {
+    return this.http.get<any>(this._pharmacyUrl+customernumber+"/requests", {headers: {'AuthKey':localStorage.getItem('token')}})
+  }
+
   searchPharmacy(pharmacy)
   {
     return this.http.post<any>(this._pharmacyUrl+"search",pharmacy , {headers: {'AuthKey':localStorage.getItem('token')}})

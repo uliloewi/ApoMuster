@@ -11,56 +11,50 @@
                         <tr>
                         <td>Apothekenname:</td>
                         <td >{{pharmacy.ApothekenName}}</td>  
-                        </tr>
-                        <tr >
-                            <td>Ort:</td>
+                      
+                            <td style="padding-left: 120px;">Ort:</td>
                             <td >{{pharmacy.Ort}}</td>
                         </tr>
                         <tr >
                                 <td>Telefonnummer:</td>
                                 <td >{{pharmacy.Telefonnummer}}</td>
-                            </tr>
-                        <tr >
-                            <td>Postleitzahl:</td>
+                       
+                            <td style="padding-left: 120px;">Postleitzahl:</td>
                             <td >{{pharmacy.Postleitzahl}}</td>
                         </tr>
                         <tr >
                             <td>Faxnummer:</td>
                             <td >{{pharmacy.Faxnummer}}</td>
-                        </tr>
-                        <tr >
-                            <td>IDFNummer:</td>
+                       
+                            <td style="padding-left: 120px;">IDFNummer:</td>
                             <td >{{pharmacy.IDFNummer}}</td>
                         </tr>
                         <tr >
                             <td>Straße:</td>
                             <td >{{pharmacy.Strasse}}</td>
-                        </tr>
-                        <tr >
-                            <td>EMail:</td>
+                      
+                            <td style="padding-left: 120px;">EMail:</td>
                             <td >{{pharmacy.EMail}}</td>
                         </tr>
                         <tr >
                             <td>Apotheker:</td>
                             <td >{{pharmacy.Vorname}} {{pharmacy.Nachname}}</td>
-                        </tr>
-                        <tr >
-                            <td>Betriebsstätte:</td>
+                     
+                            <td style="padding-left: 120px;">Betriebsstätte:</td>
                             <td >{{pharmacy.Betriebsstaette}}</td>
                         </tr>
                         <tr >
                             <td>Geburtsdatum:</td>
-                            <td >{{pharmacy.Geburtsdatum}}</td>
-                        </tr>
-                        <tr >
-                            <td>Gebietsleiter:</td>
+                            <td >{{pharmacy.Geburtsdatum.substring(0, 10)}}</td>
+                        
+                            <td style="padding-left: 120px;">Gebietsleiter:</td>
                             <td >{{pharmacy.Gebietsleiter}}</td>
                         </tr>
                     </table>
                     </div>
-                    <div *ngIf="!changenumberclicked">
+                    <div *ngIf="!(changenumberclicked || getrequestsclicked)">
                         <h2>Bestellungen</h2>
-                        <table class="table table-striped table-sm">
+                        <table class="table table-striped table-sm" *ngIf="orders.length>0; else shownoorder" >
                             <thead>
                                 <tr>
                                     <th >ID</th>
@@ -82,6 +76,9 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <ng-template #shownoorder>
+                                <label>keine Bestellung</label>
+                        </ng-template>
                     </div>
                     <div *ngIf="changenumberclicked" class="changeCustomerNumberDiv">
                             <h2>Kundennummer ändern</h2>
@@ -97,6 +94,42 @@
                             <button type="button" (click)="saveToDatabase()" class="btn btn-success float-right">Speichern</button>
                             <button type="button" (click)="cancelChange()" class="btn btn-success float-right" style="margin-right:10px;">Abbrechen</button>   
                     </div>
+                    <div *ngIf="getrequestsclicked " class="changeCustomerNumberDiv">
+                       
+                        <h2>Anfragen  <button type="button" (click)="newRequest()" class="btn btn-success float-right" style="margin-right:10px;">Neue Anfrage</button> </h2>
+                          
+                   
+                    <table *ngIf="requests.length>0; else showlabel" class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th >Bearbeiter</th>
+                                    <th >Datum</th>
+                                    <th >Thema</th>
+                                    <th >Empfang durch</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let rq of this.requests | orderBy: RequestID : true" (click)="showRequest(rq.RequestID)">
+                                    <td >
+                                        {{rq.CreatorFirstName}} {{rq.CreatorLastName}}
+                                    </td>
+                                    <td >
+                                        {{rq.DateReceived.substring(0, 10)}}
+                                    </td>    
+                                    <td >
+                                        {{rq.RequestType}}
+                                    </td>
+                                    <td >
+                                        {{rq.ContactMediumType}}
+                                    </td>    
+                                </tr>
+                            
+                            </tbody>
+                        </table>
+                        <ng-template #showlabel>
+                                <label>keine Anfrage</label>
+                        </ng-template>
+                </div>
                 </div>
             </main>
     </div>

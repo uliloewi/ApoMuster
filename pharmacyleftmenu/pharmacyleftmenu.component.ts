@@ -20,4 +20,8 @@ export class PharmacyleftmenuComponent implements OnInit {
     this.ph.changeCustomerNo();    
   }
 
+  getRequests(){
+    this.ph.getRequests();
+  }
+
 }

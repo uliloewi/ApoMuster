@@ -29,6 +29,7 @@ export class AuthService {
   logoutUser() {
     localStorage.removeItem('token')
     localStorage.removeItem("username")
+    localStorage.removeItem("personid")
     this._router.navigate(['/events'])
   }
 

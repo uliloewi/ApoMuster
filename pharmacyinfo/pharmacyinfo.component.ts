@@ -3,6 +3,7 @@ import { IPharmacy } from '../Pharmacy';
 import { EventService } from '../event.service';
 import { Router,ActivatedRoute  } from '@angular/router'
 import { IOrder } from '../Order';
+import { IRequest } from '../Request';
 
 @Component({
   selector: 'app-pharmacyinfo',
@@ -13,7 +14,9 @@ export class PharmacyinfoComponent implements OnInit {
 
   public pharmacy:IPharmacy
   public orders = [];
+  public requests = [];
   changenumberclicked:boolean
+  getrequestsclicked:boolean
 
   public OldValue
   public NewValue
@@ -23,6 +26,7 @@ export class PharmacyinfoComponent implements OnInit {
   ngOnInit() {
     const number = this._activeroute.snapshot.params["number"];
     this.changenumberclicked= false;
+    this.getrequestsclicked=false;
 
     this._event.searchPharmacyByCustomerNumber(number)
     .subscribe(data => this.pharmacy = data.Result as IPharmacy,
@@ -36,6 +40,15 @@ export class PharmacyinfoComponent implements OnInit {
   changeCustomerNo(){
     this.OldValue=this.pharmacy.Kundennummer;
     this.changenumberclicked= true;
+    this.getrequestsclicked=false;
+  }
+
+  getRequests(){
+    this._event.getRequests(this.pharmacy.Kundennummer)
+    .subscribe(data => this.requests = data.Result as IRequest[],
+      err => console.log(err)); 
+    this.changenumberclicked= false;
+    this.getrequestsclicked=true;   
   }
 
   cancelChange(){
@@ -60,6 +73,15 @@ export class PharmacyinfoComponent implements OnInit {
 
   gotoSearchCustomer(){
     this._router.navigate(['/searchpharmacy'])
+  }
+
+  newRequest( ){
+    this._router.navigate(['/customerrequest',this.pharmacy.Kundennummer])
+  }
+
+  showRequest(id){
+    var ha: IRequest=this.requests.find(x => x.RequestID == id)
+    this._router.navigate(['/customerrequest',this.pharmacy.Kundennummer],{queryParams:ha});
   }
 
 }

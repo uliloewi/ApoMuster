@@ -11,6 +11,7 @@ import { Router } from '@angular/router'
 export class LoginComponent implements OnInit {
 
   loginUserData = {}
+  successfulLogin=true
 
   constructor(private _auth: AuthService,
               private _router: Router) { }
@@ -19,21 +20,22 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser () {
+    this.successfulLogin=false
     this._auth.loginUser(this.loginUserData)
     .subscribe(
-      res => {
-        localStorage.setItem('token', res.Result);
-        localStorage.setItem('username', res.Msg.split('\n')[0]);
-        localStorage.setItem('personid', res.Msg.split('\n')[1]);        
-        if (res.Result !== null) {
-          this._router.navigate(['/searchpharmacy'])
-        }
-        else{
-          alert("Fehler bei der Anmeldung!");
+      res => {        
+        if (res !== undefined && res.Result !== null) {
+          
+          localStorage.setItem('token', res.Result);
+          localStorage.setItem('username', res.Msg.split('\n')[0]);          
+          localStorage.setItem('personid', res.Msg.split('\n')[1]);   
+          this._router.navigate(['/searchpharmacy']);
+          this.successfulLogin=true;
         }
       },
-      err => console.log(err)
-    ) 
+      err =>   console.log(err)
+    )
+    
   }
 
 }

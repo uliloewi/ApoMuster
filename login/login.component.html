@@ -8,6 +8,7 @@
       <div class="card rounded-0">
         <div class="card-header">
           <h3 class="mb-0">Login</h3>
+          <label *ngIf="!successfulLogin" style="color:red">Benutzername oder Passwort ist falsch!</label>
         </div>
         <div class="card-body">
           <form class="form">

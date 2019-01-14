@@ -10,14 +10,10 @@ import { AuthService } from '../auth.service';
 export class EventsComponent implements OnInit {
   status: boolean = true;
   events = []
+  hasToken=false
   constructor(private _eventService: EventService,private _authService: AuthService) { }
 
-  ngOnInit() {
-    this._eventService.getEvents()
-      .subscribe(
-        res => this.events = res,
-        err => console.log(err)
-      )
+  ngOnInit() {  
   }
   ChangeClass(){
     this.status = !this.status;   

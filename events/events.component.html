@@ -73,7 +73,7 @@
                 <li data-id="9">
                     <a href="#">Shop</a>
                 </li>
-                <li data-id="10">
+                <li *ngIf="_authService.loggedIn()" data-id="10">
                     <a href="/searchpharmacy">Apothekensuche</a>
                 </li>
             </ul>

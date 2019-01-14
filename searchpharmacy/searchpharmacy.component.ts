@@ -9,44 +9,20 @@ import { IPharmacy } from '../Pharmacy';
   styleUrls: ['./searchpharmacy.component.css','../../assets/css/dashboard.css']
 })
 export class SearchpharmacyComponent implements OnInit {
-  public pharmacy:IPharmacy
+  public searchString
 
   public pharmacies = [];
 
   constructor(private _event: EventService,
     private _router: Router) { }
 
-  ngOnInit() {
-    this.pharmacy = {"Ort":"","Postleitzahl":"","ApothekenName":"","Kundennummer":"",
-    "ApothekenID": 0,
-    "Betriebsstaette": "",
-    "Strasse": "",
-    "Telefonnummer": "",
-    "Faxnummer": "",
-    "EMail": "",
-    "Nachname": "",
-    "Vorname": "",
-    "Titel": "",
-    "Geburtsdatum": "",
-    "Aktiv": "",
-    "Bemerkung": "",
-    "Gebiet": "",
-    "Gebietsleiter": "",
-    "IMS_Kreis_ID": "",
-    "Kunden_Klasse": "",
-    "IDFNummer": "",
-    "Noweda_Kunde": "",
-    "Kundennummer_vorgaenger": "",
-    "Vorgaenger_gueltig_ab": "",
-    "Kundennnummer_nachfolger": "",
-    "Nachfolger_gueltig_ab":"",
-    "ImportDatum": ""
-      }
+  ngOnInit() {    
+    
   }
 
   searchPharmacy() {
     this.pharmacies=[]
-    this._event.searchPharmacy(this.pharmacy)
+    this._event.searchPharmacy(this.searchString)
     .subscribe(data => this.pharmacies = data.Result as IPharmacy[],
       err => console.log(err));
   }

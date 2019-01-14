@@ -52,7 +52,7 @@
                         </tr>
                     </table>
                     </div>
-                    <div *ngIf="!(changenumberclicked || getrequestsclicked)">
+                    <div *ngIf="show==0">
                         <h2>Bestellungen</h2>
                         <table class="table table-striped table-sm" *ngIf="orders.length>0; else shownoorder" >
                             <thead>
@@ -63,9 +63,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let order of this.orders">
-                                    <td >
-                                        <a [routerLink]="['/orderinfo', order.OrderID]">{{order.OrderID}}</a>
+                                <tr *ngFor="let order of this.orders" (click)="getOrderdetail(order.OrderID)" class="trlikelink">
+                                    <td>
+                                        {{order.OrderID}}
                                     </td>
                                     <td >
                                         {{order.StateName}}
@@ -80,7 +80,7 @@
                                 <label>keine Bestellung</label>
                         </ng-template>
                     </div>
-                    <div *ngIf="changenumberclicked" class="changeCustomerNumberDiv">
+                    <div *ngIf="show==1" class="changeCustomerNumberDiv">
                             <h2>Kundennummer ändern</h2>
                             <div class="form-group">
                                 <label for="uname1">Alte Nummer</label>
@@ -94,12 +94,9 @@
                             <button type="button" (click)="saveToDatabase()" class="btn btn-success float-right">Speichern</button>
                             <button type="button" (click)="cancelChange()" class="btn btn-success float-right" style="margin-right:10px;">Abbrechen</button>   
                     </div>
-                    <div *ngIf="getrequestsclicked " class="changeCustomerNumberDiv">
-                       
+                    <div *ngIf="show==2" class="changeCustomerNumberDiv">
                         <h2>Anfragen  <button type="button" (click)="newRequest()" class="btn btn-success float-right" style="margin-right:10px;">Neue Anfrage</button> </h2>
-                          
-                   
-                    <table *ngIf="requests.length>0; else showlabel" class="table table-striped table-sm">
+                        <table *ngIf="requests.length>0; else showlabel" class="table table-striped table-sm">
                             <thead>
                                 <tr>
                                     <th >Bearbeiter</th>
@@ -114,7 +111,7 @@
                                         {{rq.CreatorFirstName}} {{rq.CreatorLastName}}
                                     </td>
                                     <td >
-                                        {{rq.DateReceived.substring(0, 10)}}
+                                        {{rq.DateReceived}}
                                     </td>    
                                     <td >
                                         {{rq.RequestType}}
@@ -129,7 +126,45 @@
                         <ng-template #showlabel>
                                 <label>keine Anfrage</label>
                         </ng-template>
-                </div>
+                    </div>
+                    <div *ngIf="show==3" class="changeCustomerNumberDiv">
+                        <h2>Information über Bestellung {{order.OrderID}}</h2>
+                        <table  class="table table-sm">
+                        <h3>{{errorMsg}}</h3>
+                        <tr>
+                        <td >Status: </td>
+                        <td >{{order.StateName}}</td>  
+                        </tr>
+                        <tr >
+                            <td >Bestellt am: </td>
+                            <td >{{order.OrderDate}}</td>
+                        </tr>
+                        <tr >
+                            <td >Bestellt von: </td>
+                            <td >{{order.Aponame}}</td>
+                        </tr>
+                        </table>
+                        <h2>Artikel</h2>
+                        <table class="table table-striped table-sm">
+                            <thead>
+                            <tr>
+                                <th >Artikelname</th>
+                                <th >Menge</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let item of orderitems">
+                                <td >
+                                    {{item.ProductName}}
+                                </td>
+                                <td >
+                                    {{item.Quantity}}
+                                </td>       
+                            </tr>
+                            </tbody>
+                            <button type="button" (click)="cancelChange()" class="btn btn-success float-right" style="margin-right:-100px;margin-top: 20px;">Zurück</button>   
+                        </table>                        
+                    </div>
                 </div>
             </main>
     </div>

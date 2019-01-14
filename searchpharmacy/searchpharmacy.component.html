@@ -7,31 +7,14 @@
           <h2 >Kunden Suchen</h2>          
           <div class="card-body">
             <form class="form">
-              <div style="margin-bottom: 120px;">
-                <div class="row">                      
-                  <label class="labelsearch">Kundennummer: </label>
+              <div style="margin-bottom: 120px;">                
+                <div class="row">                        
                   <div class="form-group">
-                    <input type="text" class="form-control rounded-0" [(ngModel)]="pharmacy.Kundennummer" name="customernumber" >
-                  </div>
-                  
-                  <label  class="labelsearch">Apothekename: </label>
-                  <div class="form-group">
-                    <input type="text" class="form-control rounded-0" [(ngModel)]="pharmacy.ApothekenName" name="pharmacyname" >              
+                      <input type="text" class="form-control rounded-0" [(ngModel)]="searchString" name="searchstring" style="width:1000px">              
                   </div>
                 </div>
-                <div class="row">                      
-                    <label class="labelsearch">Ort: </label>
-                    <div class="form-group">
-                      <input type="text" class="form-control rounded-0" [(ngModel)]="pharmacy.Ort" name="city" >              
-                    </div>
-                    
-                    <label class="labelsearch">PLZ :</label>
-                    <div class="form-group">
-                        <input type="text" class="form-control rounded-0" [(ngModel)]="pharmacy.Postleitzahl" name="PostalCode" >              
-                      </div>
-                    </div>
-                  <div>
-                    <button type="button" (click)="searchPharmacy()" class="btn btn-success float-right">Suche</button>
+                <div>
+                  <button type="button" (click)="searchPharmacy()" class="btn btn-success float-right">Suche</button>
                 </div>
               </div>
               <div *ngIf="pharmacies.length > 0">

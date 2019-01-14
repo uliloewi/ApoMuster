@@ -3,6 +3,7 @@ import { IPharmacy } from '../Pharmacy';
 import { EventService } from '../event.service';
 import { Router,ActivatedRoute  } from '@angular/router'
 import { IOrder } from '../Order';
+import { IOrderItem } from '../OrderItem';
 import { IRequest } from '../Request';
 
 @Component({
@@ -15,8 +16,9 @@ export class PharmacyinfoComponent implements OnInit {
   public pharmacy:IPharmacy
   public orders = [];
   public requests = [];
-  changenumberclicked:boolean
-  getrequestsclicked:boolean
+  show=0
+  public order:IOrder
+  public orderitems = [];
 
   public OldValue
   public NewValue
@@ -25,34 +27,39 @@ export class PharmacyinfoComponent implements OnInit {
 
   ngOnInit() {
     const number = this._activeroute.snapshot.params["number"];
-    this.changenumberclicked= false;
-    this.getrequestsclicked=false;
-
     this._event.searchPharmacyByCustomerNumber(number)
     .subscribe(data => this.pharmacy = data.Result as IPharmacy,
       err => console.log(err));
-
-      this._event.searchOrdersForPharmacy(number)
-      .subscribe(data => this.orders = data.Result as IOrder[],
-        err => console.log(err));
+    this._event.searchOrdersForPharmacy(number)
+    .subscribe(data => this.orders = data.Result as IOrder[],
+      err => console.log(err));
   }
 
   changeCustomerNo(){
     this.OldValue=this.pharmacy.Kundennummer;
-    this.changenumberclicked= true;
-    this.getrequestsclicked=false;
+    this.show=1
   }
 
   getRequests(){
     this._event.getRequests(this.pharmacy.Kundennummer)
     .subscribe(data => this.requests = data.Result as IRequest[],
       err => console.log(err)); 
-    this.changenumberclicked= false;
-    this.getrequestsclicked=true;   
+    this.show=2
+  }
+
+  getOrderdetail(id){    
+    this._event.getOrderById(id)
+    .subscribe(data => this.order = data.Result as IOrder,
+      err => console.log(err));
+
+    this._event.getOrderItemsById(id)
+    .subscribe(data => this.orderitems = data.Result as IOrderItem[],
+      err => console.log(err));
+    this.show=3
   }
 
   cancelChange(){
-    this.changenumberclicked= false;
+    this.show= 0;
   }
 
   saveToDatabase () {
@@ -64,7 +71,7 @@ export class PharmacyinfoComponent implements OnInit {
           alert(res);
         }
         else{
-          this.changenumberclicked= false;
+          this.show= 0;
         }    
     },
     err => console.log(err)

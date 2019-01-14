@@ -17,14 +17,6 @@ export class EventService {
    })
   }
 
- /*  getContactMediumType(): any {
-    return this.http.get<any>("http://localhost:54703/api2/ContactMediumType/",  {headers: {'AuthKey':localStorage.getItem('token')}})
-  }
-
-  getRequestType(): any {
-    return this.http.get<any>("http://localhost:54703/api2/RequestType/",  {headers: {'AuthKey':localStorage.getItem('token')}})
-  } */
-
   SaveNewCustomerNumber(valuepair)
   {
     return this.http.post<any>(this._saveNewValueUrl, valuepair, {headers: {'AuthKey':localStorage.getItem('token')}})
@@ -43,9 +35,9 @@ export class EventService {
     return this.http.get<any>(EventService._rootUrl+ "requests/"+id, {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
-  searchPharmacy(pharmacy)
+  searchPharmacy(pharmacyStr)
   {
-    return this.http.post<any>(this._pharmacyUrl+"search",pharmacy , {headers: {'AuthKey':localStorage.getItem('token')}})
+     return this.http.get<any>(this._pharmacyUrl+"query/"+pharmacyStr , {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   searchPharmacyByCustomerNumber(customernumber)

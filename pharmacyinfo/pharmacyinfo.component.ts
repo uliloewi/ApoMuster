@@ -80,8 +80,9 @@ export class PharmacyinfoComponent implements OnInit {
   }
 
   showRequest(id){
-    var ha: IRequest=this.requests.find(x => x.RequestID == id)
-    this._router.navigate(['/customerrequest',this.pharmacy.Kundennummer],{queryParams:ha});
+    //var ha: IRequest=this.requests.find(x => x.RequestID == id)
+    //this._router.navigate(['/customerrequest',this.pharmacy.Kundennummer],{queryParams:ha});
+    this._router.navigate(['/customerrequest',this.pharmacy.Kundennummer],{queryParams:{ RequestID: id } });
   }
 
 }

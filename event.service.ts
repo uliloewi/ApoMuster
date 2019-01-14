@@ -48,6 +48,10 @@ export class EventService {
     return this.http.get<any>(this._pharmacyUrl+customernumber+"/requests", {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
+  getRequestByID(id): any {
+    return this.http.get<any>("http://localhost:54703/api2/requests/"+id, {headers: {'AuthKey':localStorage.getItem('token')}})
+  }
+
   searchPharmacy(pharmacy)
   {
     return this.http.post<any>(this._pharmacyUrl+"search",pharmacy , {headers: {'AuthKey':localStorage.getItem('token')}})

@@ -24,7 +24,10 @@ export class CustomerrequestComponent implements OnInit {
   ngOnInit() {
     this.customerNumber = this._activeroute.snapshot.params["number"];
     if (this._activeroute.snapshot.queryParams.RequestID !== undefined ) {
-       this.cr= this._activeroute.snapshot.queryParams as IRequest;
+      this._event.getRequestByID(this._activeroute.snapshot.queryParams.RequestID)
+      .subscribe(data => this.cr = data.Result as IRequest,
+        err => console.log(err));
+      //this.cr= this._activeroute.snapshot.queryParams as IRequest;
     }
   }
 

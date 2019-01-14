@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Router } from '@angular/router'
+import { EventService} from './event.service'
 
 @Injectable()
 export class AuthService {
 
   private _registerUrl = "http://localhost:3000/api/register";
   //private _loginUrl = "http://localhost:54703/api/login"; // Yu Li v1
-  private _loginUrl = "http://localhost:54703/api2/login"; //Yu Li v2
+  private _loginUrl = EventService._rootUrl+"login"; //Yu Li v2
 
   constructor(private http: HttpClient,
               private _router: Router) { }

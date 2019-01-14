@@ -11,8 +11,9 @@ export class EventService {
   private _eventsUrl = "http://localhost:3000/api/events";
   private _saveNewValueUrl = "http://localhost:54703/api/v1/audittrails"; //Yu Li v1
   //private _saveNewValueUrl = "http://localhost:54703/api/v2/audittrails"; //Yu Li v2
-  private _pharmacyUrl="http://localhost:54703/api2/pharmacies/";
-  private _orderUrl="http://localhost:54703/api2/orders/";
+  public static _rootUrl="http://localhost:54703/api2/";
+  private _pharmacyUrl=EventService._rootUrl+ "pharmacies/";
+  private _orderUrl=EventService._rootUrl+ "orders/";
 
   constructor(private http: HttpClient) { }
 
@@ -49,7 +50,7 @@ export class EventService {
   }
 
   getRequestByID(id): any {
-    return this.http.get<any>("http://localhost:54703/api2/requests/"+id, {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.get<any>(EventService._rootUrl+ "requests/"+id, {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   searchPharmacy(pharmacy)

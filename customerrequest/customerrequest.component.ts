@@ -37,15 +37,14 @@ export class CustomerrequestComponent implements OnInit {
           res => {                              
               if (res.Status < 300){                
                 this.saved =true
-                this.hint="Die Anfrage wurde gespeichert."
-              }    
+                window.top.close();   
+              }              
           },
           err => {
             console.log(err)
             this.hint="Bitte prüfen Sie die Felder."
           }
-    ) 
-     
+    )          
   }
 
   backClicked() {

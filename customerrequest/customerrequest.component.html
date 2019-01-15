@@ -42,7 +42,7 @@
                         </div>
                         <div>  
                             <button type="button" (click)="saveToDatabase()" class="btn btn-success float-right" [attr.disabled]="saved ||cr.RequestID>0 ? '' : null"  >Speichern</button>                        
-                            <button type="button" (click)="backClicked()" class="btn btn-success float-right" style="margin-right:10px;">Zurück</button>
+                            <button *ngIf="cr.RequestID>0" type="button" (click)="backClicked()" class="btn btn-success float-right" style="margin-right:10px;">Zurück</button>
                         </div>
                     </div>
                 </div>

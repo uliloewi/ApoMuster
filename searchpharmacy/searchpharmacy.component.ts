@@ -11,6 +11,8 @@ import { IPharmacy } from '../Pharmacy';
 export class SearchpharmacyComponent implements OnInit {
   public searchString
 
+  searchclicked=false
+
   public pharmacies = [];
 
   constructor(private _event: EventService,
@@ -21,9 +23,11 @@ export class SearchpharmacyComponent implements OnInit {
   }
 
   searchPharmacy() {
-    this.pharmacies=[]
+    this.pharmacies=[]    
     this._event.searchPharmacy(this.searchString)
     .subscribe(data => this.pharmacies = data.Result as IPharmacy[],
       err => console.log(err));
+    this.searchclicked=true
+    
   }
 }

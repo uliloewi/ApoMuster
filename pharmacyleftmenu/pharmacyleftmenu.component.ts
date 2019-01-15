@@ -24,4 +24,8 @@ export class PharmacyleftmenuComponent implements OnInit {
     this.ph.getRequests();
   }
 
+  showOrders(){
+    this.ph.show=0;
+  }
+
 }

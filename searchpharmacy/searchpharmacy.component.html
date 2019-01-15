@@ -10,11 +10,15 @@
               <div style="margin-bottom: 120px;">                
                 <div class="row">                        
                   <div class="form-group">
-                      <input type="text" class="form-control rounded-0" [(ngModel)]="searchString" name="searchstring" style="width:1000px">              
+                    <tr>
+                      <td>
+                        <input type="text" class="form-control rounded-0" placeholder="Apothekenname, Kundennummer, Ort, PLZ, usw" [(ngModel)]="searchString" name="searchstring" style="width:800px">  
+                      </td>
+                      <td>
+                        <button type="button" (click)="searchPharmacy()" class="btn btn-success float-right">Suche</button>     
+                      </td>
+                    </tr>       
                   </div>
-                </div>
-                <div>
-                  <button type="button" (click)="searchPharmacy()" class="btn btn-success float-right">Suche</button>
                 </div>
               </div>
               <div *ngIf="pharmacies.length > 0">
@@ -59,7 +63,9 @@
                     </tbody>
                 </table>
               </div>
-            
+              <div style="text-align: center;" *ngIf="searchclicked && pharmacies.length === 0 ">
+                  <label>Keine Apotheke wurde gefunden.</label>
+              </div>            
             </form>
           </div>  
         </div>

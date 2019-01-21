@@ -6,7 +6,7 @@ export class EventService {
   private _saveNewValueUrl = "http://localhost:54703/api/v1/audittrails"; //Yu Li v1
   //private _saveNewValueUrl = "http://localhost:54703/api/v2/audittrails"; //Yu Li v2
   public static _rootUrl="http://localhost:54703/api2/";
-  private _pharmacyUrl=EventService._rootUrl+ "pharmacies/";
+  private _pharmacyUrl=EventService._rootUrl+ "pharmacies";
   private _orderUrl=EventService._rootUrl+ "orders/";
 
   constructor(private http: HttpClient) { }
@@ -24,11 +24,11 @@ export class EventService {
 
   SaveNewCustomerRequest(cutomerRequest,customernumber)
   {
-    return this.http.post<any>(this._pharmacyUrl+customernumber+"/requests", cutomerRequest, {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.post<any>(this._pharmacyUrl+"/"+customernumber+"/requests", cutomerRequest, {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   getRequests(customernumber): any {
-    return this.http.get<any>(this._pharmacyUrl+customernumber+"/requests", {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.get<any>(this._pharmacyUrl+"/"+customernumber+"/requests", {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   getRequestByID(id): any {
@@ -37,17 +37,17 @@ export class EventService {
 
   searchPharmacy(pharmacyStr)
   {
-     return this.http.get<any>(this._pharmacyUrl+"query/"+pharmacyStr , {headers: {'AuthKey':localStorage.getItem('token')}})
+     return this.http.get<any>(this._pharmacyUrl+"?search="+pharmacyStr , {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   searchPharmacyByCustomerNumber(customernumber)
   {
-    return this.http.get<any>(this._pharmacyUrl+customernumber,  {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.get<any>(this._pharmacyUrl+"/"+customernumber,  {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   searchOrdersForPharmacy(customernumber)
   {
-    return this.http.get<any>(this._pharmacyUrl+customernumber+"/orders",  {headers: {'AuthKey':localStorage.getItem('token')}})
+    return this.http.get<any>(this._pharmacyUrl+"/"+customernumber+"/orders",  {headers: {'AuthKey':localStorage.getItem('token')}})
   }
 
   getOrderById(orderid)
